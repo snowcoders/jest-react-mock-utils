@@ -1,0 +1,71 @@
+{
+  "author": "Snowcoders",
+  "description": "Simple utiltiies to help with mocking React scenarios for testing",
+  "devDependencies": {
+    "@release-it/keep-a-changelog": "3.1.0",
+    "@snowcoders/renovate-config": "3.0.0-beta.8",
+    "@types/react": "18.0.26",
+    "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@typescript-eslint/parser": "5.47.1",
+    "changelog-updater": "2.0.3",
+    "concurrently": "7.6.0",
+    "cpy-cli": "4.2.0",
+    "eslint": "8.30.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.2",
+    "jest": "29.3.1",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.1",
+    "react": "18.2.0",
+    "release-it": "15.6.0",
+    "rimraf": "3.0.2",
+    "sortier": "1.0.1",
+    "ts-jest": "29.0.3",
+    "tslib": "2.4.1",
+    "typescript": "4.9.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist-cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "homepage": "https://github.com/snowcoders/jest-react-mock-utils",
+  "keywords": [
+    "jest",
+    "react",
+    "mock",
+    "mocking",
+    "shallow",
+    "testing",
+    "test",
+    "component"
+  ],
+  "license": "UNLICENSED",
+  "main": "./dist-cjs/index.js",
+  "name": "jest-react-mock-utils",
+  "private": "true",
+  "repository": "github:snowcoders/jest-react-mock-utils",
+  "scripts": {
+    "build": "concurrently \"npm:build:*\"",
+    "build:cjs": "tsc -p tsconfig.cjs.json && cpy ./src/cjs-package.json.txt ./dist-cjs --flat --rename=package.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "clean": "rimraf coverage dist dist-cjs",
+    "husky:commit-msg": "echo 'No commit message hook'",
+    "husky:pre-commit": "npx --no lint-staged",
+    "husky:pre-push": "npm test",
+    "prepare": "npm run clean && npm run build && npx --no husky install",
+    "start": "node bin/index.js",
+    "test": "jest",
+    "version": "changelog-updater && git add ."
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "0.0.0"
+}

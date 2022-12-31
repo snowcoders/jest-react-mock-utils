@@ -1,0 +1,9 @@
+# Use an allow list system so we don't accidentally publish something we don't mean to
+**
+
+!/bin/**
+!/dist-cjs/**
+!/dist/**
+!/LICENSE
+!/CHANGELOG.md
+!/README.md

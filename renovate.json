@@ -1,0 +1,3 @@
+{
+  "extends": ["github>snowcoders/renovate-config"]
+}
