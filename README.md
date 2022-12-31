@@ -4,15 +4,20 @@ Simple utiltiies to help with mocking React scenarios for testing.
 
 ## Usage
 
-The best option is to check out our [unit tests](./src/functional-component/index.test.tsx) to see different uses however here's a quick code snippet.
+The best option is to check out our [integration tests](./src/tests-functional-component/child-with-props/index.test.tsx) to see more real world scenarios.
 
 ```typescript
-// Step 1: if using typescript, import the Props for the child component
+import { render } from "@testing-library/react";
+import React from "react";
+import { it, jest } from "@jest/globals";
+import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
+
+// Step 1: if using typescript, import the Prop types for the child component
 import type { ChildProps } from "./test-asset.child.js";
 
 // Step 2: Now mock the child component
 jest.unstable_mockModule("./test-asset.child.js", () => ({
-  Child: createMockFunctionComponent<ChildProps>("button"),
+  Child: createMockComponent<ChildProps>("button"),
 }));
 
 // Step 3: Import the parent and child, mocking the child
@@ -24,9 +29,27 @@ afterEach(() => {
 });
 
 // Step 4: Write your test
-it("Mock child callback causes click count to increase", async () => {
-  // Act
+it("Child callback causes click count to increase", async () => {
+  // Arrange
   const result = render(<Parent />);
+
+  // Act - Fires the onComplicatedCallback for the last render cycle
+  await act(() =>
+    getMockComponentPropCalls(Child)
+      ?.at(-1)
+      ?.onClick?.({} as any)
+  );
+
+  // Assert
+  const countElement = result.getByTestId("click-count");
+  expect(countElement.innerHTML).toBe("1");
+});
+
+it("Clicking child causes click count to increase", async () => {
+  // Arrange
+  const result = render(<Parent />);
+
+  // Act
   await userEvent.click(result.getByRole("button"));
 
   // Assert
@@ -46,9 +69,7 @@ There's two halves to this problem:
    - Does your runtime environment support this? Node started [support](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#browser_compatibility) in 14.8.0.
    - If using typescript, is your `module` set to [ES2022](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html#module-es2022) or later?
 
-## Goals
-
-### Why mock?
+## Purpose
 
 Unfortunately there exist scenarios where you may not want to render a child component; for example when that child component is delay loaded, complex, unstable, server driven, or not owned by you directly and is already covered by integration or end to end testing scenarios.
 
@@ -61,6 +82,8 @@ A good example scenario is [Stripe's React Elements Component](https://www.npmjs
 To create a full integration test for this scenario would be extremely complex, costly, and constantly unpredictable as Stripe and Adyen can change the rendering of the components from their server side causing random instability of your tests.
 
 Instead of constantly being on the backfoot and your CI breaking because another company updated their systems, mocking those dependencies provides a level of stability at the sacrifice of real world resemblance.
+
+## Goals
 
 ### Dependencies
 
