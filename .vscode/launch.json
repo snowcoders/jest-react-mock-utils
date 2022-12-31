@@ -12,19 +12,8 @@
       "program": "${workspaceRoot}/node_modules/jest/bin/jest",
       "request": "launch",
       "sourceMaps": true,
-      "type": "node"
-    },
-    {
-      "args": [],
-      "cwd": "${workspaceRoot}",
-      "name": "Debug app",
-      "outFiles": [],
-      "preLaunchTask": "npm: build",
-      "program": "${workspaceRoot}/bin/index",
-      "request": "launch",
-      "runtimeArgs": ["--nolazy"],
-      "sourceMaps": true,
-      "type": "node"
+      "type": "node",
+      "runtimeArgs": ["--experimental-vm-modules"]
     }
   ],
   "version": "0.2.0"

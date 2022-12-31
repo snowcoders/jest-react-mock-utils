@@ -1,22 +1,19 @@
-import { jest } from "@jest/globals";
-import React from "react";
+import { createMockFunctionComponent, getMockFunctionComponentPropCalls } from "./functional-component/index.js";
 
-export function createMockComponent<TProps>({ elementType = "div" }): jest.MockedFunction<React.FC<TProps>> {
-  return jest.fn((props: TProps) => {
-    if (props == null) {
-      return React.createElement(elementType);
-    } else if (typeof props === "object" && "children" in props) {
-      const { children, ...rest } = props as React.PropsWithChildren<TProps>;
-      return React.createElement(elementType, rest, children);
-    } else {
-      return React.createElement(elementType, props);
-    }
-  });
+/**
+ * Generates a new mock component with the prop signature provided.
+ *
+ * @param {string} elementType the HTMLElement type to render. Default is div.
+ * @returns A mock component to be used in conjunction with other utilities in this library
+ */
+export function createMockComponent<TProps>(
+  mockComponent: Parameters<typeof createMockFunctionComponent<TProps>>[0]
+): ReturnType<typeof createMockFunctionComponent<TProps>> {
+  return createMockFunctionComponent(mockComponent);
 }
 
-export function getMockComponentPropCalls<TProps>(mockComponent: jest.MockedFunction<React.FC<TProps>>): TProps[] {
-  const propCalls = mockComponent.mock.calls.map((value) => {
-    return value[0];
-  });
-  return propCalls;
+export function getMockComponentPropCalls<TProps>(
+  mockComponent: Parameters<typeof getMockFunctionComponentPropCalls<TProps>>[0]
+): ReturnType<typeof getMockFunctionComponentPropCalls<TProps>> {
+  return getMockFunctionComponentPropCalls(mockComponent);
 }

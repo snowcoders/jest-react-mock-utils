@@ -1,3 +1,6 @@
 import { jest } from "@snowcoders/renovate-config";
 
-export default jest;
+export default {
+  ...jest,
+  testEnvironment: "jsdom",
+};

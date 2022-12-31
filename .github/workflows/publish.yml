@@ -43,5 +43,5 @@ jobs:
         run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 
       - name: Publish
-        run: npx --no release-it -- --ci
+        run: npx --no release-it -- --ci --dry-run
         continue-on-error: true
