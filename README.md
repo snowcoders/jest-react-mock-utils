@@ -83,6 +83,15 @@ To create a full integration test for this scenario would be extremely complex, 
 
 Instead of constantly being on the backfoot and your CI breaking because another company updated their systems, mocking those dependencies provides a level of stability at the sacrifice of real world resemblance.
 
+### How is this similar/different than enzyme's shallow?
+
+Enzyme's shallow would be able to mock all the imports for you by calling `shallow(<Parent />)`. This library requires you to:
+
+1. Use `jest.unstable_mockModule` to mock all the child components the Parent component is dependent on
+1. Dynamically load the Parent component after mocking all the child components
+
+Theoretically if you mocked all the children a Parent component was dependent on, it would be fairly similar to Enzyme's shallow render.
+
 ## Goals
 
 ### Dependencies
