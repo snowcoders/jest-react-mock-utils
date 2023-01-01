@@ -1,10 +1,9 @@
 // This test verifies that this library can work with class components
 
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import React from "react";
 import { it, jest } from "@jest/globals";
-import { createMockFunctionComponent, getMockFunctionComponentPropCalls } from "../index.js";
+import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
 import "@testing-library/jest-dom";
 
 // Step 1:
@@ -18,54 +17,42 @@ import type { ChildProps } from "./test-asset.child.js";
 // Step 2:
 // Now mock the child component
 jest.unstable_mockModule("./test-asset.child.js", () => ({
-  Child: createMockFunctionComponent<ChildProps>({ elementType: "button" }),
+  Child: createMockComponent<ChildProps>({ elementType: "button" }),
 }));
 
 // Step 3:
 // Import the parent now that the child is mocked
 // Note that if you're using below ES2022 you'll need to run the `await import`
 // statements in a beforeEach
-const { Parent, parentTestIdMap } = await import("./test-asset.parent.js");
+const { Parent } = await import("./test-asset.parent.js");
 const { Child } = jest.mocked(await import("./test-asset.child.js"));
 
 afterEach(() => {
   Child.mockClear();
 });
 
-it("Renders click count defaulted to 0", () => {
-  // Act
+it("Returns propCalls with getMockComponentPropCalls", () => {
+  // Arrange
   const result = render(<Parent />);
 
   // Assert
-  const countElement = result.getByTestId(parentTestIdMap.clickCount);
-  expect(countElement.innerHTML).toBe("0");
-});
-
-it("Renders with mocked child", () => {
-  // Act
-  render(<Parent />);
-
-  // Assert
-  const propCalls = getMockFunctionComponentPropCalls(Child);
+  const propCalls = getMockComponentPropCalls(Child);
   expect(propCalls).toHaveLength(1);
 });
 
-it("Mock child callback causes click count to increase", async () => {
-  // Act
+it("Renders a button instead of the real element's span", async () => {
+  // Arrange
   const result = render(<Parent />);
-  await userEvent.click(result.getByRole("button"));
 
   // Assert
-  const countElement = result.getByTestId(parentTestIdMap.clickCount);
-  expect(countElement.innerHTML).toBe("1");
+  const buttons = await result.findAllByRole("button");
+  expect(buttons).toHaveLength(1);
 });
 
-it("Mock child callback causes mock child to re-render", async () => {
-  // Act
+it("Doesn't contain the real child's innerText content", async () => {
+  // Arrange
   const result = render(<Parent />);
-  await userEvent.click(result.getByRole("button"));
 
   // Assert
-  const propCalls = getMockFunctionComponentPropCalls(Child);
-  expect(propCalls).toHaveLength(2);
+  await expect(result.findAllByText("Real child")).rejects.toBeTruthy();
 });
