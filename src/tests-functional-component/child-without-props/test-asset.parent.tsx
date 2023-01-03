@@ -1,7 +1,7 @@
 import React from "react";
 import { Child } from "./test-asset.child.js";
 
-export type ParentProps = {};
+export type ParentProps = Record<string, never>;
 
 export function Parent(props: ParentProps) {
   return (

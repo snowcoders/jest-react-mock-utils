@@ -1,7 +1,7 @@
-import React, { HtmlHTMLAttributes } from "react";
+import React from "react";
 
-export type ChildProps = {} & Pick<HtmlHTMLAttributes<HTMLButtonElement>, "onClick">;
+export type ChildProps = Record<string, never>;
 
-export function Child() {
+export function Child(props: ChildProps) {
   return <span>Real child</span>;
 }

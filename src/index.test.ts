@@ -1,6 +1,6 @@
 // This file contains some basic tests, for the integration tests see `tests-class-component` and `tests-function-component`
 
-import { describe, it, jest } from "@jest/globals";
+import { describe, it } from "@jest/globals";
 import { render } from "@testing-library/react";
 import { createMockComponent, getMockComponentPropCalls } from "./index.js";
 import React from "react";

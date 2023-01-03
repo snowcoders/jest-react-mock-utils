@@ -18,7 +18,7 @@ export type Options = {
  * @param {string} elementType the HTMLElement type to render. Default is div.
  * @returns A mock component to be used in conjunction with other utilities in this library
  */
-export function createMockComponent<TProps>(options?: Options) {
+export function createMockComponent<TProps>(options?: Options): jest.Mocked<React.ComponentType<TProps>> {
   const { elementType } = {
     ...defaultOptions,
     ...options,

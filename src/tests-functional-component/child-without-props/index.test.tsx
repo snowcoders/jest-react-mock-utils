@@ -1,5 +1,3 @@
-// This test verifies that this library can work with class components
-
 import { render } from "@testing-library/react";
 import React from "react";
 import { it, jest } from "@jest/globals";

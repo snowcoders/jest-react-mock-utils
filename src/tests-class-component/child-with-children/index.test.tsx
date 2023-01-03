@@ -1,5 +1,3 @@
-// This test verifies that this library can work with class components
-
 import { act, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
