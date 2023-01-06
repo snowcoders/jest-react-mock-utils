@@ -6,7 +6,7 @@ export const parentTestIdMap = {
   child: "child",
 };
 
-export type ParentProps = Record<string, never>;
+export type ParentProps = Record<keyof any, never>;
 
 type ParentState = {
   clickCount: number;
