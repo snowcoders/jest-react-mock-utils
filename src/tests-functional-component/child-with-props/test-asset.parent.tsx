@@ -6,7 +6,7 @@ export const parentTestIdMap = {
   child: "child",
 };
 
-export type ParentProps = {};
+export type ParentProps = Record<string, never>;
 
 export function Parent(props: ParentProps) {
   const [clickCount, setClickCount] = useState(0);

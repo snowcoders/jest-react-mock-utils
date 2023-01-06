@@ -1,5 +1,3 @@
-// This test verifies that this library can work with class components
-
 import { act, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
@@ -30,6 +28,26 @@ const { Child } = jest.mocked(await import("./test-asset.child.js"));
 
 afterEach(() => {
   Child.mockClear();
+});
+
+describe("Github issue #7 - Using ReturnType on createMockComponent", () => {
+  let Child: ReturnType<typeof createMockComponent<ChildProps>>;
+
+  beforeEach(async () => {
+    Child = jest.mocked((await import("./test-asset.child.js")).Child);
+  });
+
+  it("Renders dynamic import child", async () => {
+    // Arrange
+    const spy = jest.fn();
+    const result = render(<Child onClick={spy} />);
+
+    // Act
+    await userEvent.click(result.getByRole("button"));
+
+    // Assert
+    expect(spy).toHaveBeenCalled();
+  });
 });
 
 it("Renders click count defaulted to 0", () => {
