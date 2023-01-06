@@ -5,7 +5,7 @@ export const parentTestIdMap = {
   child: "child",
 };
 
-export type ParentProps = Record<string, never>;
+export type ParentProps = Record<keyof any, never>;
 
 export class Parent extends React.Component<ParentProps> {
   render() {
