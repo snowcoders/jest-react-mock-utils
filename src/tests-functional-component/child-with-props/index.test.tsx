@@ -40,7 +40,7 @@ describe("Github issue #7 - Using ReturnType on createMockComponent", () => {
   it("Renders dynamic import child", async () => {
     // Arrange
     const spy = jest.fn();
-    const result = render(<Child onClick={spy} />);
+    const result = render(<Child onClick={spy} someData="someData" onPointerEnter={() => {}} />);
 
     // Act
     await userEvent.click(result.getByRole("button"));

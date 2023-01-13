@@ -21,7 +21,12 @@ export function Parent(props: ParentProps) {
       <div>
         Click count is <span data-testid={parentTestIdMap.clickCount}>{clickCount}</span>
       </div>
-      <Child data-testid={parentTestIdMap.child} onClick={handleChildClick}>
+      <Child
+        data-testid={parentTestIdMap.child}
+        onClick={handleChildClick}
+        someData="someData"
+        onPointerEnter={() => {}}
+      >
         Increment
       </Child>
     </div>

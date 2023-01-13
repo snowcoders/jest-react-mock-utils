@@ -15,7 +15,6 @@ export type Options = {
 /**
  * Generates a new mock component with the prop signature provided.
  *
- * @param {string} elementType the HTMLElement type to render. Default is div.
  * @returns A mock component to be used in conjunction with other utilities in this library
  */
 export function createMockComponent<TProps>(options?: Options): jest.Mocked<React.ComponentType<TProps>> {
@@ -27,14 +26,16 @@ export function createMockComponent<TProps>(options?: Options): jest.Mocked<Reac
   // Our implementation renders all components (class and function) as function components
   // so forcing the type to function here
   return jest.fn((props: TProps) => {
-    if (props == null) {
-      return React.createElement(elementType);
-    } else if (typeof props === "object" && "children" in props) {
-      const { children, ...rest } = props as React.PropsWithChildren<TProps>;
-      return React.createElement(elementType, rest, children);
-    } else {
-      return React.createElement(elementType, props);
-    }
+    const propsWithReactHack = {
+      ...props,
+      // All the react checks seem to be based off a function isCustomComponent
+      // - Uses of isCustomComponent https://github.com/facebook/react/search?q=isCustomComponent&type=code
+      // - Function itself https://github.com/facebook/react/blob/8e2bde6f2751aa6335f3cef488c05c3ea08e074a/packages/react-dom-bindings/src/shared/isCustomComponent.js
+      // By providing "props.is" we can bypass the property checks all together
+      is: elementType,
+    };
+
+    return React.createElement(elementType, propsWithReactHack);
   });
 }
 
