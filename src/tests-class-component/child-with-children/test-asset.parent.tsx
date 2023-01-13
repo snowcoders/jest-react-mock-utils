@@ -36,7 +36,12 @@ export class Parent extends React.Component<ParentProps, ParentState> {
         <div>
           Click count is <span data-testid={parentTestIdMap.clickCount}>{clickCount}</span>
         </div>
-        <Child data-testid={parentTestIdMap.child} onClick={this.handleChildClick}>
+        <Child
+          data-testid={parentTestIdMap.child}
+          onClick={this.handleChildClick}
+          someData="someData"
+          onPointerEnter={() => {}}
+        >
           Increment
         </Child>
       </div>
