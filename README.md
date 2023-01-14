@@ -1,5 +1,10 @@
 # jest-react-mock-utils
 
+[![CI](https://img.shields.io/github/actions/workflow/status/snowcoders/jest-react-mock-utils/ci.yml)](https://github.com/snowcoders/jest-react-mock-utils/actions/workflows/publish.yml)
+[![Coverage Status](https://coveralls.io/repos/github/snowcoders/jest-react-mock-utils/badge.svg?branch=main)](https://coveralls.io/github/snowcoders/jest-react-mock-utils?branch=main)
+[![npm version](https://img.shields.io/npm/v/jest-react-mock-utils.svg)](https://www.npmjs.com/package/jest-react-mock-utils)
+[![Downloads](https://img.shields.io/npm/dm/jest-react-mock-utils.svg)](https://www.npmjs.com/package/jest-react-mock-utils)
+
 Simple utiltiies to help with mocking React scenarios for testing.
 
 ## Usage
