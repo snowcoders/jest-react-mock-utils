@@ -1,11 +1,10 @@
 import React, { HtmlHTMLAttributes } from "react";
 
-export type ChildProps = React.PropsWithChildren<
-  Pick<HtmlHTMLAttributes<HTMLButtonElement>, "onClick"> & {
-    someData: string;
-    onPointerEnter: () => void;
-  }
->;
+export type ChildProps = React.PropsWithChildren<{
+  onClick: HtmlHTMLAttributes<HTMLButtonElement>["onClick"];
+  someData: string;
+  onComplicatedCallback: () => void;
+}>;
 
 export class Child extends React.Component<ChildProps> {
   render() {

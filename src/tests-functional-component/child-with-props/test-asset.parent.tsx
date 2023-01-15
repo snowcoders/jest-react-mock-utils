@@ -25,7 +25,7 @@ export function Parent(props: ParentProps) {
         data-testid={parentTestIdMap.child}
         onClick={handleChildClick}
         someData="someData"
-        onPointerEnter={() => {}}
+        onComplicatedCallback={() => {}}
       />
     </div>
   );
