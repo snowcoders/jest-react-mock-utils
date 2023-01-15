@@ -42,7 +42,7 @@ it("Child callback causes click count to increase", async () => {
   await act(() =>
     getMockComponentPropCalls(Child)
       ?.at(-1)
-      ?.onClick?.({} as any)
+      ?.onComplicatedCallback?.({} as any)
   );
 
   // Assert

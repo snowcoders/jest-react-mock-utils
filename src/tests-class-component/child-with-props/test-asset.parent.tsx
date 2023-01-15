@@ -40,7 +40,7 @@ export class Parent extends React.Component<ParentProps, ParentState> {
           data-testid={parentTestIdMap.child}
           onClick={this.handleChildClick}
           someData="someData"
-          onPointerEnter={() => {}}
+          onComplicatedCallback={() => {}}
         />
       </div>
     );
