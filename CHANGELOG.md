@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2023-01-15
+
+- First production release
+- No changes since 0.0.2
+
 ## [0.0.2] - 2023-01-13
 
 - Fixed React console logging errors and warnings for properties it doesn't recognize as default HTML attributes
