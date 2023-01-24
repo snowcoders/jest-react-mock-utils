@@ -19,7 +19,7 @@
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.3",
     "jest": "*",
-    "jest-environment-jsdom": "29.3.1",
+    "jest-environment-jsdom": "29.4.0",
     "lint-staged": "13.1.0",
     "prettier": "2.8.3",
     "react": "*",
