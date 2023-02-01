@@ -51,7 +51,7 @@
     "test",
     "component"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "./dist-cjs/index.js",
   "name": "jest-react-mock-utils",
   "peerDependencies": {

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Changed license to MIT
+
 ## [1.0.0] - 2023-01-15
 
 - First production release
