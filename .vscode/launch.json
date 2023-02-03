@@ -11,9 +11,9 @@
       "name": "Debug Relative Jest Tests",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest",
       "request": "launch",
+      "runtimeArgs": ["--experimental-vm-modules"],
       "sourceMaps": true,
-      "type": "node",
-      "runtimeArgs": ["--experimental-vm-modules"]
+      "type": "node"
     }
   ],
   "version": "0.2.0"

@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "noUnusedLocals": false,
     "jsx": "react",
+    "module": "ES2022",
+    "noUnusedLocals": false,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "module": "ES2022"
+    "rootDir": "./src"
   },
   "extends": "./node_modules/@snowcoders/renovate-config/tsconfig.library.json",
   "include": ["./src/**/*"]

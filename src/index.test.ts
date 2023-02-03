@@ -1,10 +1,10 @@
 // This file contains some basic tests, for the integration tests see `tests-class-component` and `tests-function-component`
 
 import { describe, it } from "@jest/globals";
-import { render } from "@testing-library/react";
-import { createMockComponent, getMockComponentPropCalls } from "./index.js";
-import React from "react";
 import "@testing-library/jest-dom";
+import { render } from "@testing-library/react";
+import React from "react";
+import { createMockComponent, getMockComponentPropCalls } from "./index.js";
 
 describe("createMockComponent", () => {
   it("returns without any parameters", () => {

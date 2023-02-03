@@ -1,5 +1,5 @@
-import React from "react";
 import { jest } from "@jest/globals";
+import React from "react";
 
 const defaultOptions: Required<Options> = {
   elementType: "div",
