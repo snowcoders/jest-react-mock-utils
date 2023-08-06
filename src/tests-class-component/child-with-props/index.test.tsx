@@ -1,9 +1,11 @@
-import { act, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import React from "react";
 import { it, jest } from "@jest/globals";
-import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
 import "@testing-library/jest-dom";
+// https://github.com/testing-library/user-event/issues/1146: userEvent doesn't support Node16 properly
+const userEvent = UserEventModule.default ?? UserEventModule;
+import { act, render } from "@testing-library/react";
+import UserEventModule from "@testing-library/user-event";
+import React from "react";
+import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
 
 // Step 1:
 // import type allows you to import just the types and not the actual file.
@@ -40,7 +42,7 @@ describe("Github issue #7 - Using ReturnType on createMockComponent", () => {
   it("Renders dynamic import child", async () => {
     // Arrange
     const spy = jest.fn();
-    const result = render(<Child onClick={spy} someData="someData" onComplicatedCallback={() => {}} />);
+    const result = render(<Child onClick={spy} onComplicatedCallback={() => {}} someData="someData" />);
 
     // Act
     await userEvent.click(result.getByRole("button"));
@@ -100,10 +102,11 @@ describe("Activating the onClick callback directly", () => {
     const result = render(<Parent />);
 
     // Act
-    await act(() =>
-      getMockComponentPropCalls(Child)
-        ?.at(-1)
-        ?.onClick?.({} as any)
+    await act(
+      () =>
+        getMockComponentPropCalls(Child)
+          ?.at(-1)
+          ?.onClick?.({} as any),
     );
 
     // Assert
@@ -116,10 +119,11 @@ describe("Activating the onClick callback directly", () => {
     render(<Parent />);
 
     // Act
-    await act(() =>
-      getMockComponentPropCalls(Child)
-        ?.at(-1)
-        ?.onClick?.({} as any)
+    await act(
+      () =>
+        getMockComponentPropCalls(Child)
+          ?.at(-1)
+          ?.onClick?.({} as any),
     );
 
     // Assert
