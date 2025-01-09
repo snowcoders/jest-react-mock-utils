@@ -1,6 +1,6 @@
 // This file contains some basic tests, for the integration tests see `tests-class-component` and `tests-function-component`
 
-import { describe, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
 import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import React from "react";
@@ -68,7 +68,7 @@ describe("getMockComponentPropCalls", () => {
       expect(() => {
         getMockComponentPropCalls(
           // @ts-expect-error I'm testing a negative scenario here so I need to break typescript a bit
-          () => React.createElement("span")
+          () => React.createElement("span"),
         );
       }).toThrowError("Did you forget to call createMockComponent");
     });
