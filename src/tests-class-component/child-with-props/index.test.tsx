@@ -1,9 +1,7 @@
-import { it, jest } from "@jest/globals";
+import { afterEach, beforeEach, describe, expect, it, jest } from "@jest/globals";
 import "@testing-library/jest-dom";
-// https://github.com/testing-library/user-event/issues/1146: userEvent doesn't support Node16 properly
-const userEvent = UserEventModule.default ?? UserEventModule;
 import { act, render } from "@testing-library/react";
-import UserEventModule from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import React from "react";
 import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
 
@@ -102,11 +100,10 @@ describe("Activating the onClick callback directly", () => {
     const result = render(<Parent />);
 
     // Act
-    await act(
-      () =>
-        getMockComponentPropCalls(Child)
-          ?.at(-1)
-          ?.onClick?.({} as any),
+    await act(() =>
+      getMockComponentPropCalls(Child)
+        ?.at(-1)
+        ?.onClick?.({} as any),
     );
 
     // Assert
@@ -119,11 +116,10 @@ describe("Activating the onClick callback directly", () => {
     render(<Parent />);
 
     // Act
-    await act(
-      () =>
-        getMockComponentPropCalls(Child)
-          ?.at(-1)
-          ?.onClick?.({} as any),
+    await act(() =>
+      getMockComponentPropCalls(Child)
+        ?.at(-1)
+        ?.onClick?.({} as any),
     );
 
     // Assert

@@ -1,8 +1,8 @@
+import { afterEach, expect, it, jest } from "@jest/globals";
+import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import React from "react";
-import { it, jest } from "@jest/globals";
 import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
-import "@testing-library/jest-dom";
 
 // Step 1:
 // import type allows you to import just the types and not the actual file.

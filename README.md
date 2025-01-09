@@ -14,7 +14,7 @@ The best option is to check out our [integration tests](./src/tests-functional-c
 ```typescript
 import { render } from "@testing-library/react";
 import React from "react";
-import { it, jest } from "@jest/globals";
+import { it, jest, expect, afterEach } from "@jest/globals";
 import { createMockComponent, getMockComponentPropCalls } from "../../index.js";
 
 // Step 1: if using typescript, import the Prop types for the child component
