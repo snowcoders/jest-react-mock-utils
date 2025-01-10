@@ -5,9 +5,9 @@
     "@release-it/keep-a-changelog": "5.0.0",
     "@snowcoders/renovate-config": "3.0.0-beta.17",
     "@testing-library/jest-dom": "6.4.7",
-    "@testing-library/react": "16.0.0",
+    "@testing-library/react": "16.1.0",
     "@testing-library/user-event": "14.5.2",
-    "@types/react": "18.3.18",
+    "@types/react": "19.0.4",
     "@typescript-eslint/eslint-plugin": "8.19.1",
     "@typescript-eslint/parser": "8.19.1",
     "changelog-updater": "2.0.3",
@@ -26,7 +26,7 @@
     "sortier": "2.0.2",
     "ts-jest": "29.2.5",
     "tslib": "2.8.1",
-    "typescript": "5.3.3"
+    "typescript": "5.7.3"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -54,7 +54,7 @@
   "name": "jest-react-mock-utils",
   "peerDependencies": {
     "jest": "^29.0.0",
-    "react": "^17.0.0 || ^18.0.0"
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "repository": "github:snowcoders/jest-react-mock-utils",
   "scripts": {
