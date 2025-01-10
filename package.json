@@ -65,7 +65,7 @@
     "husky:commit-msg": "echo 'No commit message hook'",
     "husky:pre-commit": "npx --no lint-staged",
     "husky:pre-push": "npm test",
-    "prepare": "npm run clean && npm run build",
+    "prepare": "npm run clean && npm run build && npx --no husky",
     "start": "node bin/index.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "version": "changelog-updater && git add ."
