@@ -16,7 +16,7 @@
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-prettier": "5.5.3",
+    "eslint-plugin-prettier": "5.5.4",
     "husky": "9.1.7",
     "jest-environment-jsdom": "30.0.5",
     "lint-staged": "16.1.2",
