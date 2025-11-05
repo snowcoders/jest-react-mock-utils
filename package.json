@@ -21,7 +21,7 @@
     "jest-environment-jsdom": "30.2.0",
     "lint-staged": "16.2.6",
     "prettier": "3.6.2",
-    "release-it": "19.0.5",
+    "release-it": "19.0.6",
     "rimraf": "6.1.0",
     "sortier": "2.1.1",
     "ts-jest": "29.4.5",
