@@ -20,7 +20,7 @@
     "husky": "9.1.7",
     "jest-environment-jsdom": "30.5.2",
     "lint-staged": "17.6.1",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "release-it": "21.1.2",
     "rimraf": "6.1.4",
     "sortier": "2.1.1",
